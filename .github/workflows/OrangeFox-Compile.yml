@@ -20,23 +20,23 @@ on:
       DEVICE_TREE:
         description: 'Custom Recovery Tree'
         required: true
-        default: 'https://github.com/cd-Crypton/custom_recovery_tree_realme_nashc'
+        default: 'https://github.com/Alfianfach/device_xiaomi_fog-TWRP'
       DEVICE_TREE_BRANCH:
         description: 'Custom Recovery Tree Branch'
         required: true
-        default: 'android-12.1'
+        default: 'new'
       DEVICE_PATH:
         description: 'Specify your device path.'
         required: true
-        default: 'device/realme/nashc'
+        default: 'device/xiaomi/fog'
       DEVICE_NAME:
         description: 'Specify your Device Codename.'
         required: true
-        default: 'nashc'
+        default: 'fog'
       BUILD_TARGET:
         description: 'Specify your Build Target'
         required: true
-        default: 'recovery'
+        default: 'boot'
         type: choice
         options:
         - boot
@@ -103,6 +103,8 @@ jobs:
         set +e
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
+        export FOX_VIRTUAL_AB_DEVICE=1
+        export LC_ALL="C"
         set -e
         ${{ steps.fox_branch.outputs.value }}
 
